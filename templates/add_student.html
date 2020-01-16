@@ -1,0 +1,345 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h1>Add a Student</h1>
+<div class="record-container">
+    {% if message is not none %}<p class='center-text red'>{{ message }}</p>{% endif %}
+
+    <form class="details" action="{{ url_for('success_add')}}" method="POST">
+        <div class="bottom-space">
+            <span><strong>First Name:</strong></span>
+            <input id="add-first-name" placeholder="First name" type="text" autocomplete="off" name="firstName" required>
+        </div>
+        <div>
+            <span><strong>Last Name:</strong></span>
+            <input id="add-last-name" placeholder="Last name" type="text" autocomplete="off" name="lastName" required>
+        </div>
+
+        <h4>Current Magic Skills</h4>
+        <table>
+            <tr>
+                <th>Topic</th>
+                <th>L1</th>
+                <th>L2</th>
+                <th>L3</th>
+                <th>L4</th>
+                <th>L5</th>
+            </tr>
+            <tr>
+                <td>Alchemy</td>
+                <td><input type="radio" name="Current Alchemy" value="1"></td>
+                <td><input type="radio" name="Current Alchemy" value="2"></td>
+                <td><input type="radio" name="Current Alchemy" value="3"></td>
+                <td><input type="radio" name="Current Alchemy" value="4"></td>
+                <td><input type="radio" name="Current Alchemy" value="5"></td>
+            </tr>
+            <tr>
+                <td>Animation</td>
+                <td><input type="radio" name="Current Animation" value="1"></td>
+                <td><input type="radio" name="Current Animation" value="2"></td>
+                <td><input type="radio" name="Current Animation" value="3"></td>
+                <td><input type="radio" name="Current Animation" value="4"></td>
+                <td><input type="radio" name="Current Animation" value="5"></td>
+            </tr>
+            <tr>
+                <td>Conjuror</td>
+                <td><input type="radio" name="Current Conjuror" value="1"></td>
+                <td><input type="radio" name="Current Conjuror" value="2"></td>
+                <td><input type="radio" name="Current Conjuror" value="3"></td>
+                <td><input type="radio" name="Current Conjuror" value="4"></td>
+                <td><input type="radio" name="Current Conjuror" value="5"></td>
+            </tr>
+            <tr>
+                <td>Disintegration</td>
+                <td><input type="radio" name="Current Disintegration" value="1"></td>
+                <td><input type="radio" name="Current Disintegration" value="2"></td>
+                <td><input type="radio" name="Current Disintegration" value="3"></td>
+                <td><input type="radio" name="Current Disintegration" value="4"></td>
+                <td><input type="radio" name="Current Disintegration" value="5"></td>
+            </tr>
+            <tr>
+                <td>Elemental</td>
+                <td><input type="radio" name="Current Elemental" value="1"></td>
+                <td><input type="radio" name="Current Elemental" value="2"></td>
+                <td><input type="radio" name="Current Elemental" value="3"></td>
+                <td><input type="radio" name="Current Elemental" value="4"></td>
+                <td><input type="radio" name="Current Elemental" value="5"></td>
+            </tr>
+            <tr>
+                <td>Healing</td>
+                <td><input type="radio" name="Current Healing" value="1"></td>
+                <td><input type="radio" name="Current Healing" value="2"></td>
+                <td><input type="radio" name="Current Healing" value="3"></td>
+                <td><input type="radio" name="Current Healing" value="4"></td>
+                <td><input type="radio" name="Current Healing" value="5"></td>
+            </tr>
+            <tr>
+                <td>Illusion</td>
+                <td><input type="radio" name="Current Illusion" value="1"></td>
+                <td><input type="radio" name="Current Illusion" value="2"></td>
+                <td><input type="radio" name="Current Illusion" value="3"></td>
+                <td><input type="radio" name="Current Illusion" value="4"></td>
+                <td><input type="radio" name="Current Illusion" value="5"></td>
+            </tr>
+            <tr>
+                <td>Immortality</td>
+                <td><input type="radio" name="Current Immortality" value="1"></td>
+                <td><input type="radio" name="Current Immortality" value="2"></td>
+                <td><input type="radio" name="Current Immortality" value="3"></td>
+                <td><input type="radio" name="Current Immortality" value="4"></td>
+                <td><input type="radio" name="Current Immortality" value="5"></td>
+            </tr>
+            <tr>
+                <td>Invisibility</td>
+                <td><input type="radio" name="Current Invisibility" value="1"></td>
+                <td><input type="radio" name="Current Invisibility" value="2"></td>
+                <td><input type="radio" name="Current Invisibility" value="3"></td>
+                <td><input type="radio" name="Current Invisibility" value="4"></td>
+                <td><input type="radio" name="Current Invisibility" value="5"></td>
+            </tr>
+            <tr>
+                <td>Invulnerability</td>
+                <td><input type="radio" name="Current Invulnerability" value="1"></td>
+                <td><input type="radio" name="Current Invulnerability" value="2"></td>
+                <td><input type="radio" name="Current Invulnerability" value="3"></td>
+                <td><input type="radio" name="Current Invulnerability" value="4"></td>
+                <td><input type="radio" name="Current Invulnerability" value="5"></td>
+            </tr>
+            <tr>
+                <td>Necromancer</td>
+                <td><input type="radio" name="Current Necromancer" value="1"></td>
+                <td><input type="radio" name="Current Necromancer" value="2"></td>
+                <td><input type="radio" name="Current Necromancer" value="3"></td>
+                <td><input type="radio" name="Current Necromancer" value="4"></td>
+                <td><input type="radio" name="Current Necromancer" value="5"></td>
+            </tr>
+            <tr>
+                <td>Omnipresent</td>
+                <td><input type="radio" name="Current Omnipresent" value="1"></td>
+                <td><input type="radio" name="Current Omnipresent" value="2"></td>
+                <td><input type="radio" name="Current Omnipresent" value="3"></td>
+                <td><input type="radio" name="Current Omnipresent" value="4"></td>
+                <td><input type="radio" name="Current Omnipresent" value="5"></td>
+            </tr>
+            <tr>
+                <td>Omniscient</td>
+                <td><input type="radio" name="Current Omniscient" value="1"></td>
+                <td><input type="radio" name="Current Omniscient" value="2"></td>
+                <td><input type="radio" name="Current Omniscient" value="3"></td>
+                <td><input type="radio" name="Current Omniscient" value="4"></td>
+                <td><input type="radio" name="Current Omniscient" value="5"></td>
+            </tr>
+            <tr>
+                <td>Poison</td>
+                <td><input type="radio" name="Current Poison" value="1"></td>
+                <td><input type="radio" name="Current Poison" value="2"></td>
+                <td><input type="radio" name="Current Poison" value="3"></td>
+                <td><input type="radio" name="Current Poison" value="4"></td>
+                <td><input type="radio" name="Current Poison" value="5"></td>
+            </tr>
+            <tr>
+                <td>Possession</td>
+                <td><input type="radio" name="Current Possession" value="1"></td>
+                <td><input type="radio" name="Current Possession" value="2"></td>
+                <td><input type="radio" name="Current Possession" value="3"></td>
+                <td><input type="radio" name="Current Possession" value="4"></td>
+                <td><input type="radio" name="Current Possession" value="5"></td>
+            </tr>
+            <tr>
+                <td>Self-detonation</td>
+                <td><input type="radio" name="Current Self-detonation" value="1"></td>
+                <td><input type="radio" name="Current Self-detonation" value="2"></td>
+                <td><input type="radio" name="Current Self-detonation" value="3"></td>
+                <td><input type="radio" name="Current Self-detonation" value="4"></td>
+                <td><input type="radio" name="Current Self-detonation" value="5"></td>
+            </tr>
+            <tr>
+                <td>Summoning</td>
+                <td><input type="radio" name="Current Summoning" value="1"></td>
+                <td><input type="radio" name="Current Summoning" value="2"></td>
+                <td><input type="radio" name="Current Summoning" value="3"></td>
+                <td><input type="radio" name="Current Summoning" value="4"></td>
+                <td><input type="radio" name="Current Summoning" value="5"></td>
+            </tr>
+            <tr>
+                <td>Water breathing</td>
+                <td><input type="radio" name="Current Water breathing" value="1"></td>
+                <td><input type="radio" name="Current Water breathing" value="2"></td>
+                <td><input type="radio" name="Current Water breathing" value="3"></td>
+                <td><input type="radio" name="Current Water breathing" value="4"></td>
+                <td><input type="radio" name="Current Water breathing" value="5"></td>
+            </tr>
+        </table>
+
+        <h4>Desired Magic Skills</h4>
+        <table>
+            <tr>
+                <th>Topic</th>
+                <th>L1</th>
+                <th>L2</th>
+                <th>L3</th>
+                <th>L4</th>
+                <th>L5</th>
+            </tr>
+            <tr>
+                <td>Alchemy</td>
+                <td><input type="radio" name="Desired Alchemy" value="1"></td>
+                <td><input type="radio" name="Desired Alchemy" value="2"></td>
+                <td><input type="radio" name="Desired Alchemy" value="3"></td>
+                <td><input type="radio" name="Desired Alchemy" value="4"></td>
+                <td><input type="radio" name="Desired Alchemy" value="5"></td>
+            </tr>
+            <tr>
+                <td>Animation</td>
+                <td><input type="radio" name="Desired Animation" value="1"></td>
+                <td><input type="radio" name="Desired Animation" value="2"></td>
+                <td><input type="radio" name="Desired Animation" value="3"></td>
+                <td><input type="radio" name="Desired Animation" value="4"></td>
+                <td><input type="radio" name="Desired Animation" value="5"></td>
+            </tr>
+            <tr>
+                <td>Conjuror</td>
+                <td><input type="radio" name="Desired Conjuror" value="1"></td>
+                <td><input type="radio" name="Desired Conjuror" value="2"></td>
+                <td><input type="radio" name="Desired Conjuror" value="3"></td>
+                <td><input type="radio" name="Desired Conjuror" value="4"></td>
+                <td><input type="radio" name="Desired Conjuror" value="5"></td>
+            </tr>
+            <tr>
+                <td>Disintegration</td>
+                <td><input type="radio" name="Desired Disintegration" value="1"></td>
+                <td><input type="radio" name="Desired Disintegration" value="2"></td>
+                <td><input type="radio" name="Desired Disintegration" value="3"></td>
+                <td><input type="radio" name="Desired Disintegration" value="4"></td>
+                <td><input type="radio" name="Desired Disintegration" value="5"></td>
+            </tr>
+            <tr>
+                <td>Elemental</td>
+                <td><input type="radio" name="Desired Elemental" value="1"></td>
+                <td><input type="radio" name="Desired Elemental" value="2"></td>
+                <td><input type="radio" name="Desired Elemental" value="3"></td>
+                <td><input type="radio" name="Desired Elemental" value="4"></td>
+                <td><input type="radio" name="Desired Elemental" value="5"></td>
+            </tr>
+            <tr>
+                <td>Healing</td>
+                <td><input type="radio" name="Desired Healing" value="1"></td>
+                <td><input type="radio" name="Desired Healing" value="2"></td>
+                <td><input type="radio" name="Desired Healing" value="3"></td>
+                <td><input type="radio" name="Desired Healing" value="4"></td>
+                <td><input type="radio" name="Desired Healing" value="5"></td>
+            </tr>
+            <tr>
+                <td>Illusion</td>
+                <td><input type="radio" name="Desired Illusion" value="1"></td>
+                <td><input type="radio" name="Desired Illusion" value="2"></td>
+                <td><input type="radio" name="Desired Illusion" value="3"></td>
+                <td><input type="radio" name="Desired Illusion" value="4"></td>
+                <td><input type="radio" name="Desired Illusion" value="5"></td>
+            </tr>
+            <tr>
+                <td>Immortality</td>
+                <td><input type="radio" name="Desired Immortality" value="1"></td>
+                <td><input type="radio" name="Desired Immortality" value="2"></td>
+                <td><input type="radio" name="Desired Immortality" value="3"></td>
+                <td><input type="radio" name="Desired Immortality" value="4"></td>
+                <td><input type="radio" name="Desired Immortality" value="5"></td>
+            </tr>
+            <tr>
+                <td>Invisibility</td>
+                <td><input type="radio" name="Desired Invisibility" value="1"></td>
+                <td><input type="radio" name="Desired Invisibility" value="2"></td>
+                <td><input type="radio" name="Desired Invisibility" value="3"></td>
+                <td><input type="radio" name="Desired Invisibility" value="4"></td>
+                <td><input type="radio" name="Desired Invisibility" value="5"></td>
+            </tr>
+            <tr>
+                <td>Invulnerability</td>
+                <td><input type="radio" name="Desired Invulnerability" value="1"></td>
+                <td><input type="radio" name="Desired Invulnerability" value="2"></td>
+                <td><input type="radio" name="Desired Invulnerability" value="3"></td>
+                <td><input type="radio" name="Desired Invulnerability" value="4"></td>
+                <td><input type="radio" name="Desired Invulnerability" value="5"></td>
+            </tr>
+            <tr>
+                <td>Necromancer</td>
+                <td><input type="radio" name="Desired Necromancer" value="1"></td>
+                <td><input type="radio" name="Desired Necromancer" value="2"></td>
+                <td><input type="radio" name="Desired Necromancer" value="3"></td>
+                <td><input type="radio" name="Desired Necromancer" value="4"></td>
+                <td><input type="radio" name="Desired Necromancer" value="5"></td>
+            </tr>
+            <tr>
+                <td>Omnipresent</td>
+                <td><input type="radio" name="Desired Omnipresent" value="1"></td>
+                <td><input type="radio" name="Desired Omnipresent" value="2"></td>
+                <td><input type="radio" name="Desired Omnipresent" value="3"></td>
+                <td><input type="radio" name="Desired Omnipresent" value="4"></td>
+                <td><input type="radio" name="Desired Omnipresent" value="5"></td>
+            </tr>
+            <tr>
+                <td>Omniscient</td>
+                <td><input type="radio" name="Desired Omniscient" value="1"></td>
+                <td><input type="radio" name="Desired Omniscient" value="2"></td>
+                <td><input type="radio" name="Desired Omniscient" value="3"></td>
+                <td><input type="radio" name="Desired Omniscient" value="4"></td>
+                <td><input type="radio" name="Desired Omniscient" value="5"></td>
+            </tr>
+            <tr>
+                <td>Poison</td>
+                <td><input type="radio" name="Desired Poison" value="1"></td>
+                <td><input type="radio" name="Desired Poison" value="2"></td>
+                <td><input type="radio" name="Desired Poison" value="3"></td>
+                <td><input type="radio" name="Desired Poison" value="4"></td>
+                <td><input type="radio" name="Desired Poison" value="5"></td>
+            </tr>
+            <tr>
+                <td>Possession</td>
+                <td><input type="radio" name="Desired Possession" value="1"></td>
+                <td><input type="radio" name="Desired Possession" value="2"></td>
+                <td><input type="radio" name="Desired Possession" value="3"></td>
+                <td><input type="radio" name="Desired Possession" value="4"></td>
+                <td><input type="radio" name="Desired Possession" value="5"></td>
+            </tr>
+            <tr>
+                <td>Self-detonation</td>
+                <td><input type="radio" name="Desired Self-detonation" value="1"></td>
+                <td><input type="radio" name="Desired Self-detonation" value="2"></td>
+                <td><input type="radio" name="Desired Self-detonation" value="3"></td>
+                <td><input type="radio" name="Desired Self-detonation" value="4"></td>
+                <td><input type="radio" name="Desired Self-detonation" value="5"></td>
+            </tr>
+            <tr>
+                <td>Summoning</td>
+                <td><input type="radio" name="Desired Summoning" value="1"></td>
+                <td><input type="radio" name="Desired Summoning" value="2"></td>
+                <td><input type="radio" name="Desired Summoning" value="3"></td>
+                <td><input type="radio" name="Desired Summoning" value="4"></td>
+                <td><input type="radio" name="Desired Summoning" value="5"></td>
+            </tr>
+            <tr>
+                <td>Water breathing</td>
+                <td><input type="radio" name="Desired Water breathing" value="1"></td>
+                <td><input type="radio" name="Desired Water breathing" value="2"></td>
+                <td><input type="radio" name="Desired Water breathing" value="3"></td>
+                <td><input type="radio" name="Desired Water breathing" value="4"></td>
+                <td><input type="radio" name="Desired Water breathing" value="5"></td>
+            </tr>
+        </table>
+
+        <h4>Desired Courses</h4>
+        <select multiple id="courseDesired" name="courseDesired" class="bottom-space">
+            <option value="Alchemy Basics">Alchemy Basics</option>
+            <option value="Alchemy Advanced">Alchemy Advanced</option>
+            <option value="Magic for Day-to-Day Life">Magic for Day-to-Day Life</option>
+            <option value="Magic for Medical Professionals">Magic for Medical Professionals</option>
+            <option value="Dating with magic">Dating with magic</option>
+        </select>
+        <div>
+            <button type="submit"> Submit </button>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

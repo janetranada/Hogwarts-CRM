@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h1>View student</h1>
+<a href="{{ url_for('list_students') }}">Back to List</a>
+<a href="{{ url_for('list_students') }}">Edit Record</a>
+
+<p><strong>Record ID:</strong> {{ rec_id }}</p>
+<p><strong>First Name:</strong> {{ info['first_name'].capitalize() }}</p>
+<p><strong>Last Name:</strong> {{ info['last_name'].capitalize() }}</p>
+<p><strong>Current Magic Skillz:</strong></p>
+<ul>
+    {% for element in info['current_magic'] %}
+    <li>{{ element }}</li>
+    {% endfor %}
+</ul>
+
+<p><strong>Desired Magic Skills:</strong></p>
+<ul>
+    {% for element in info['desired_magic'] %}
+    <li>{{ element }}</li>
+    {% endfor %}
+</ul>
+
+<p><strong>Desired Course:</strong></p>
+<ul>
+    {% for element in info['desired_course'] %}
+    <li>{{ element }}</li>
+    {% endfor %}
+</ul>
+
+<p><strong>Date Record Created:</strong> {{ info['created'] }}</p>
+<p><strong>Date Record Last Updated:</strong> {{ info['last_updated'] }}</p>
+
+{% endblock %}

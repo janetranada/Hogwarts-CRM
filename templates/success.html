@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h3 class="center-text">{{ heading }}</h3>
+<div class="record-container">
+    <div class="details">        
+        <p><strong>First Name: </strong> {{ content['first_name'].capitalize() }}</p>
+        <p><strong>Last Name: </strong> {{ content['last_name'].capitalize() }}</p>
+        <p><strong>Current Magic Skillz: </strong>{{ content['current_magic']}}</p>
+        <p><strong>Desired Magic Skills: </strong>{{ content['desired_magic']}}</p>
+        <p><strong>Desired Course: </strong>{{ content['desired_course']}}</p>
+        <p><strong>Record ID: </strong> {{ rec_id }}</p>
+        <p><strong>Date Record Created: </strong>{{ content['created']}}</p>
+        <p><strong>Date Record Last Updated: </strong>{{ content['last_updated']}}</p>
+    </div>
+</div>
+
+{% endblock %}
