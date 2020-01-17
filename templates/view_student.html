@@ -1,9 +1,9 @@
 {% extends "index.html" %}
 
 {% block content %}
-<h1>View student</h1>
+<h2>View student</h2>
 <a href="{{ url_for('list_students') }}">Back to List</a>
-<a href="{{ url_for('list_students') }}">Edit Record</a>
+<a href="{{ url_for('update_student', record_id = rec_id) }}">Edit Record</a>
 
 <p><strong>Record ID:</strong> {{ rec_id }}</p>
 <p><strong>First Name:</strong> {{ info['first_name'].capitalize() }}</p>

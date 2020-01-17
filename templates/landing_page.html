@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/static/main.css">
-    <link href="https://fonts.googleapis.com/css?family=IM+Fell+Great+Primer+SC|Pirata+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+Great+Primer+SC|Pirata+One&display=swap"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/f26da25149.js" crossorigin="anonymous"></script>
-    
+
     <title>Hogwartz CRM</title>
 </head>
 
@@ -24,6 +25,22 @@
             </a>
         </p>
     </section>
+    <script>
+        fetch("/get_data")
+            .then(
+                function (response) {
+                    if (response.status !== 200) {
+                        console.log('Looks like there was a problem. Status Code: ' +
+                            response.status);
+                        console.log(response)
+                        return;
+                    }
+
+                    response.json().then(function (data) {
+                        console.log('success', data);
+                    })
+                })
+    </script>
 </body>
 
 </html>

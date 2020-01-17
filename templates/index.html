@@ -22,12 +22,15 @@
     </nav>
 
     <h1>Welcome to Hogwartz!</h1>
+    <p id="fetch-test"></p>
 
     {% block content %}
     {% endblock %}
 
-
-<script src="{{url_for('static', filename='crm.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+        </script>
+    <script src="{{url_for('static', filename='crm.js')}}"></script>
 </body>
 
 </html>
