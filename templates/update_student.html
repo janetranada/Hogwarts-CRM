@@ -5,7 +5,7 @@
 <div class="record-container">
     {% if message is not none %}<p class='center-text red'>{{ message }}</p>{% endif %}
 
-    <form class="details" action="{{ url_for('update_student', record_id=rec_id)}}" method="POST">
+    <form class="details" spellcheck="false" action="{{ url_for('update_student', record_id=rec_id)}}" method="POST">
         <div class="bottom-space">
             <span><strong>First Name:</strong></span>
             <input id="add-first-name" placeholder="First name" type="text" autocomplete="off" name="firstName"
@@ -46,11 +46,6 @@
 
         <div>
             <h4>Desired Magic Skills</h4>
-            <p>Populate Desired</p>
-            {% for item in student_data.desired_magic %}
-            <p>{{item}}</p>
-            {% endfor %}
-
             <table>
                 <tr>
                     <th>Topic</th>

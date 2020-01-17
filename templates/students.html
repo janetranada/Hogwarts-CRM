@@ -1,51 +1,54 @@
 {% extends "index.html" %}
 
 {% block content %}
-<h1>Student List</h1>
+<div class="all-students">
+    <h1>Students List</h1>
+    <table>
+        <tr>
+            <th>Record Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Creation Time</th>
+            <th>Last Update Time</th>
+            <th>Existing Magic Skills</th>
+            <th>Desired Magic Skillz</th>
+            <th>Course Interested In</th>
+            <th></th>
+        </tr>
+        {% for key in text %}
+        <tr>
+            <td> {{ key }} </td>
+            <td> {{ text[key]['first_name'].capitalize() }} </td>
+            <td> {{ text[key]['last_name'].capitalize() }} </td>
+            <td> {{ text[key]['created']}} </td>
+            <td> {{ text[key]['last_updated'] }} </td>
+            <td>
+                <ul>
+                    {% for element in text[key]['current_magic'] %}
+                    <li>{{ element }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    {% for element in text[key]['desired_magic'] %}
+                    <li>{{ element }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    {% for element in text[key]['desired_course'] %}
+                    <li>{{ element }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td><a class="to-link" href="{{ url_for('view_student', record_id=key) }}">View</a>
+                |
+                <a class="to-link" id="delete-record" href="{{ url_for('delete_student', record_id=key) }}">Delete</a></td>
 
-<table>
-    <tr>
-        <th>Record Id</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Creation Time</th>
-        <th>Last Update Time</th>
-        <th>Existing Magic Skills</th>
-        <th>Desired Magic Skillz</th>
-        <th>Course Interested In</th>
-        <th></th>
-    </tr>
-    {% for key in text %}
-    <tr>
-        <td> {{ key }} </td>
-        <td> {{ text[key]['first_name'].capitalize() }} </td>
-        <td> {{ text[key]['last_name'].capitalize() }} </td>
-        <td> {{ text[key]['created'] }} </td>
-        <td> {{ text[key]['last_updated'] }} </td>
-        <td>
-            <ul>
-                {% for element in text[key]['current_magic'] %}
-                <li>{{ element }}</li>
-                {% endfor %}
-            </ul>
-        </td>
-        <td>
-            <ul>
-                {% for element in text[key]['desired_magic'] %}
-                <li>{{ element }}</li>
-                {% endfor %}
-            </ul>
-        </td>
-        <td>
-            <ul>
-                {% for element in text[key]['desired_course'] %}
-                <li>{{ element }}</li>
-                {% endfor %}
-            </ul>
-        </td>
-        <td><a href="{{ url_for('view_student', record_id=key) }}">View</a></td>
-
-    </tr>
-    {% endfor %}
-</table>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 {% endblock %}

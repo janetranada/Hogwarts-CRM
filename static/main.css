@@ -3,11 +3,20 @@ body {
     margin: 0;
 }
 
+
+#index-template {
+    background-image: url('./images/background.jpg');
+    color: white;
+    background-size: contain;    
+}
+.full-vh{
+    height: 100vh;
+}
 table,
 th,
 td {
     padding: 10px;
-    border: 1px solid black;
+    border: 1px solid #fff;
 }
 table {
     margin-left: auto;
@@ -24,8 +33,11 @@ nav li {
     margin-inline-end: 20px;
 }
 nav li a {
-    color: #000;
+    color: #fff;
     text-decoration: none;
+}
+#dashboard-nav a {
+    color: #000;
 }
 li {
     text-align: left;
@@ -88,3 +100,68 @@ h1.welcome {
     color: #fa163f;
 }
 
+
+
+.chart-wrapper {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+  }
+.chart-header {
+  font-weight: 200;
+  font-size: 3em;
+  margin: 0 0 0.1em 0;
+}
+
+.chart-description {
+  font-weight: 200;
+  font-size: 0.9em;
+  margin: 0 0 20px;
+  color: #999;
+}
+
+
+.nav-link {
+    font-size: 2.2rem;
+    margin-inline-start: 15px;
+}
+.nav-img {
+    height: 160px;
+    vertical-align: middle;
+}
+.nav-container {
+    font-family: 'Pirata One', cursive;
+    text-align: center;
+}
+
+
+
+.gryffindor {
+    background-image: url('./images/gryffindor-crest.png');
+}
+.hufflepuff {
+    background-image: url('./images/hufflepuff-crest.png');
+}
+.ravenclaw {
+    background-image: url('./images/ravenclaw-crest.png');
+}
+.slytherin {
+    background-image: url('./images/slytherin-crest.png');
+}
+
+.house {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 300px;
+}
+
+.to-link{
+    color: #fff;
+}
+.in-view-link {
+    margin-inline-end: 15px;
+}
+.list-subcontainer {
+    display: inline-block;
+}

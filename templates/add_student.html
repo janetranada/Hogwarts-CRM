@@ -5,7 +5,7 @@
 <div class="record-container">
     {% if message is not none %}<p class='center-text red'>{{ message }}</p>{% endif %}
 
-    <form class="details" action="{{ url_for('success_add')}}" method="POST">
+    <form class="details" spellcheck="false" action="{{ url_for('success_add')}}" method="POST">
         <div class="bottom-space">
             <span><strong>First Name:</strong></span>
             <input id="add-first-name" placeholder="First name" type="text" autocomplete="off" name="firstName" required>
