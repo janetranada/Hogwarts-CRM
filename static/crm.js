@@ -25,8 +25,8 @@ function create_charts(_data){
 }
 
 
-function create_doughnut_Chart(_label, _data, _datasetLabel, _targetContainer, _text) {    
-    let ctx = document.getElementById(_targetContainer);
+function create_doughnut_Chart(_label, _data, _datasetLabel, _htmlContainer, _titleText) {    
+    let ctx = document.getElementById(_htmlContainer);
     new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -46,7 +46,7 @@ function create_doughnut_Chart(_label, _data, _datasetLabel, _targetContainer, _
         options: {
             title: {
                 display: true,
-                text: _text
+                text: _titleText
             },
             legend: {
                 display: true,

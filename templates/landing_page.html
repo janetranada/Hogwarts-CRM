@@ -24,22 +24,6 @@
             </a>
         </p>
     </section>
-    <script>
-        fetch("/get_data")
-            .then(
-                function (response) {
-                    if (response.status !== 200) {
-                        console.log('Looks like there was a problem. Status Code: ' +
-                            response.status);
-                        console.log(response)
-                        return;
-                    }
-
-                    response.json().then(function (data) {
-                        console.log('success', data);
-                    })
-                })
-    </script>
 </body>
 
 </html>

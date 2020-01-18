@@ -10,7 +10,7 @@ body {
     background-size: contain;    
 }
 .full-vh{
-    height: 100vh;
+    min-height: 100vh;
 }
 table,
 th,
@@ -150,10 +150,36 @@ h1.welcome {
 }
 
 .house {
+    margin: auto;
     background-size: contain;
     background-repeat: no-repeat;
     height: 300px;
     width: 300px;
+    
+}
+.house-info {
+    display: grid;
+    margin-inline-start: 25%;
+    margin-inline-end: 25%;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+.house-description {
+    margin-top: 15px;
+    font-family: 'Pirata One', cursive;
+    font-size: 2rem;
+}
+.gryffindor-text{
+    color: #db3056;
+}
+.hufflepuff-text{
+    color: #ffd369;
+}
+.slytherin-text{
+    color: #6fc1a5;
+}
+.ravenclaw-text{
+    color: #4d80e4;
 }
 
 .to-link{
@@ -164,4 +190,12 @@ h1.welcome {
 }
 .list-subcontainer {
     display: inline-block;
+}
+
+/* ADD STUDENT */
+.current-magic-table {
+    background-color: #4592af;
+}
+.desired-magic-table {
+    background-color: #ee4540;
 }

@@ -30,6 +30,20 @@ def get_crm_skills_record(_target_magic):
     return skill_counter
 
 
+def convert_time(_label):
+    global student_list
+    unixtime_list = [student_list[student][_label] for student in student_list]
+    datetime_list = [datetime.datetime.fromtimestamp(unixtime).strftime(
+        '%Y-%m-%d %H:%M:%S') for unixtime in unixtime_list]
+    student_key = [key for key in student_list]
+    datetime_dict = {}
+
+    for i in range(0, len(datetime_list)):
+        datetime_dict[student_key[i]] = datetime_list[i]
+
+    return datetime_dict
+
+
 @app.route("/")
 def landing_page():
     return render_template("landing_page.html")
@@ -58,7 +72,9 @@ def show_dashboard():
 
 @app.route("/students")
 def list_students():
-    return render_template("students.html", text=student_list)
+    created_dict = convert_time('created')
+    updated_dict = convert_time('last_updated')
+    return render_template("students.html", data=student_list, created=created_dict, updated=updated_dict)
 
 
 @app.route("/find")
@@ -68,9 +84,15 @@ def find_student():
 
 @app.route("/student/<string:record_id>")
 def view_student(record_id):
+    created_time = datetime.datetime.fromtimestamp(student_list[int(record_id)]['created']).strftime(
+        '%Y-%m-%d %H:%M:%S')
+    updated_time = datetime.datetime.fromtimestamp(student_list[int(record_id)]['last_updated']).strftime(
+        '%Y-%m-%d %H:%M:%S')
     return render_template("view_student.html",
                            info=student_list[int(record_id)],
-                           rec_id=record_id)
+                           rec_id=record_id,
+                           created=created_time,
+                           updated=updated_time)
 
 
 @app.route("/student/<string:record_id>/update", methods=['GET', 'POST'])
@@ -84,13 +106,11 @@ def update_student(record_id):
                                rec_id=record_id)
     else:  # method is POST
         curr_time = time.time()
-        update_time = datetime.datetime.fromtimestamp(
-            curr_time).strftime('%Y-%m-%d %H:%M:%S')
         desired_magic_list = skills_list('Desired')
         all_current_magic = skills_list('Current')
         student_list[int(record_id)]['first_name'] = request.form["firstName"]
         student_list[int(record_id)]['last_name'] = request.form["lastName"]
-        student_list[int(record_id)]['last_updated'] = update_time
+        student_list[int(record_id)]['last_updated'] = curr_time
         student_list[int(record_id)]['current_magic'] = all_current_magic
         student_list[int(record_id)]['desired_magic'] = desired_magic_list
         student_list[int(record_id)]['desired_course'] = request.form.getlist(
@@ -123,22 +143,25 @@ def delete_student(record_id):
 def success_add():
     global student_list
     curr_time = time.time()
-    creation_time = datetime.datetime.fromtimestamp(
-        curr_time).strftime('%Y-%m-%d %H:%M:%S')
+    # creation_time = datetime.datetime.fromtimestamp(
+    #     curr_time).strftime('%Y-%m-%d %H:%M:%S')
     new_key = max(student_list.keys()) + 1
     new_student = {}
     desired_magic_list = skills_list('Desired')
     all_current_magic = skills_list('Current')
     new_student['first_name'] = request.form["firstName"]
     new_student['last_name'] = request.form["lastName"]
-    new_student['created'] = creation_time
-    new_student['last_updated'] = creation_time
+    new_student['created'] = curr_time
+    new_student['last_updated'] = curr_time
     new_student['current_magic'] = all_current_magic
     new_student['desired_magic'] = desired_magic_list
     new_student['desired_course'] = request.form.getlist('courseDesired')
     student_list[new_key] = new_student
-    return render_template('add_student.html', message="Record successfully added.")
-    
+    return render_template('add_student.html',
+                           message="Record successfully added.",
+                           all_magic=magic,
+                           all_courses=courses)
+
 
 @app.after_request
 def add_header(r):

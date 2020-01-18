@@ -1,8 +1,8 @@
 {% extends "index.html" %}
 
 {% block content %}
-<div class="all-students">
-    <h1>Students List</h1>
+<div class="all-students full-vh">
+    <h2>Students List</h2>
     <table>
         <tr>
             <th>Record Id</th>
@@ -15,30 +15,30 @@
             <th>Course Interested In</th>
             <th></th>
         </tr>
-        {% for key in text %}
+        {% for key in data %}
         <tr>
             <td> {{ key }} </td>
-            <td> {{ text[key]['first_name'].capitalize() }} </td>
-            <td> {{ text[key]['last_name'].capitalize() }} </td>
-            <td> {{ text[key]['created']}} </td>
-            <td> {{ text[key]['last_updated'] }} </td>
+            <td> {{ data[key]['first_name'].capitalize() }} </td>
+            <td> {{ data[key]['last_name'].capitalize() }} </td>
+            <td> {{ created[key] }} </td>
+            <td> {{ updated[key] }} </td>
             <td>
                 <ul>
-                    {% for element in text[key]['current_magic'] %}
+                    {% for element in data[key]['current_magic'] %}
                     <li>{{ element }}</li>
                     {% endfor %}
                 </ul>
             </td>
             <td>
                 <ul>
-                    {% for element in text[key]['desired_magic'] %}
+                    {% for element in data[key]['desired_magic'] %}
                     <li>{{ element }}</li>
                     {% endfor %}
                 </ul>
             </td>
             <td>
                 <ul>
-                    {% for element in text[key]['desired_course'] %}
+                    {% for element in data[key]['desired_course'] %}
                     <li>{{ element }}</li>
                     {% endfor %}
                 </ul>
