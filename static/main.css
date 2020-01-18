@@ -80,18 +80,38 @@ h1.welcome {
     text-align: center;
 }
 
-/* ADD STUDENT */
+
 .bottom-space {
     margin-bottom: 5px;
 }
 
+.student.record-container {
+    margin: 60px;
+    color: black;    
+}
+.student.record-container table{    
+    border-color: transparent;    
+}
+.student.record-container th,
+.student.record-container td{    
+    border-color: black;    
+}
 
-/* SUCCESSFULLY ADDED */
+.scroll-bg {
+    padding-top: 65px;
+    padding-bottom: 65px;
+    background-image: url(./images/scroll.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
 .record-container {
     display: grid;
 }
 .details {
-    justify-self: center;  
+    padding: 25px;
+    justify-self: center; 
+    background-color:black; 
 }
 .details h4{
     margin-bottom: 5px;
@@ -99,7 +119,10 @@ h1.welcome {
 .red {
     color: #fa163f;
 }
-
+.level-color {
+    color:#ff0000;
+    font-weight: bold;
+}
 
 
 .chart-wrapper {
@@ -198,4 +221,9 @@ h1.welcome {
 }
 .desired-magic-table {
     background-color: #ee4540;
+}
+
+.input-skills-container {
+    display: inline-block;
+    margin-inline-end: 20px;
 }

@@ -2,46 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 import time
 import datetime
 from crm_data import student_list, magic, courses, houses
+import helper_func as helper
 
 app = Flask(__name__)
-
-
-def skills_list(status):
-    levels = []
-    for i in range(0, len(magic)):
-        levels.append(request.form.get(status + ' ' + magic[i]))
-
-    skills = [magic[i] + " " + levels[i]
-              for i in range(0, len(magic)) if levels[i] is not None]
-    return skills
-
-
-def get_crm_skills_record(_target_magic):
-    global student_list
-    global magic
-    all_magic = []
-    for student in student_list:
-        student_magic_list = [magic.split()[0]
-                              for magic in student_list[student][_target_magic]]
-        all_magic.append(student_magic_list)
-
-    flatlist_magic = [item for sublist in all_magic for item in sublist]
-    skill_counter = [flatlist_magic.count(skill) for skill in magic]
-    return skill_counter
-
-
-def convert_time(_label):
-    global student_list
-    unixtime_list = [student_list[student][_label] for student in student_list]
-    datetime_list = [datetime.datetime.fromtimestamp(unixtime).strftime(
-        '%Y-%m-%d %H:%M:%S') for unixtime in unixtime_list]
-    student_key = [key for key in student_list]
-    datetime_dict = {}
-
-    for i in range(0, len(datetime_list)):
-        datetime_dict[student_key[i]] = datetime_list[i]
-
-    return datetime_dict
 
 
 @app.route("/")
@@ -52,8 +15,8 @@ def landing_page():
 @app.route("/get_data")
 def get_data():
     data_to_pass = {}
-    current_skill_counter = get_crm_skills_record("current_magic")
-    desired_skill_counter = get_crm_skills_record("desired_magic")
+    current_skill_counter = helper.get_crm_skills_record("current_magic")
+    desired_skill_counter = helper.get_crm_skills_record("desired_magic")
     data_to_pass["current_magic_counter"] = current_skill_counter
     data_to_pass["desired_magic_counter"] = desired_skill_counter
     data_to_pass["magic_name"] = magic
@@ -72,8 +35,8 @@ def show_dashboard():
 
 @app.route("/students")
 def list_students():
-    created_dict = convert_time('created')
-    updated_dict = convert_time('last_updated')
+    created_dict = helper.convert_time('created')
+    updated_dict = helper.convert_time('last_updated')
     return render_template("students.html", data=student_list, created=created_dict, updated=updated_dict)
 
 
@@ -105,13 +68,13 @@ def update_student(record_id):
                                all_courses=courses,
                                rec_id=record_id)
     else:  # method is POST
-        curr_time = time.time()
-        desired_magic_list = skills_list('Desired')
-        all_current_magic = skills_list('Current')
+        current_time = time.time()
+        desired_magic_list = helper.skills_list('Desired')
+        current_magic_list = helper.skills_list('Current')
         student_list[int(record_id)]['first_name'] = request.form["firstName"]
         student_list[int(record_id)]['last_name'] = request.form["lastName"]
-        student_list[int(record_id)]['last_updated'] = curr_time
-        student_list[int(record_id)]['current_magic'] = all_current_magic
+        student_list[int(record_id)]['last_updated'] = current_time
+        student_list[int(record_id)]['current_magic'] = current_magic_list
         student_list[int(record_id)]['desired_magic'] = desired_magic_list
         student_list[int(record_id)]['desired_course'] = request.form.getlist(
             'courseDesired')
@@ -134,7 +97,6 @@ def add_student():
 
 @app.route("/student/<string:record_id>/delete")
 def delete_student(record_id):
-    print(student_list[int(record_id)])
     del student_list[int(record_id)]
     return redirect("/students")
 
@@ -142,18 +104,16 @@ def delete_student(record_id):
 @app.route("/success", methods=['POST'])
 def success_add():
     global student_list
-    curr_time = time.time()
-    # creation_time = datetime.datetime.fromtimestamp(
-    #     curr_time).strftime('%Y-%m-%d %H:%M:%S')
+    current_time = time.time()
     new_key = max(student_list.keys()) + 1
     new_student = {}
-    desired_magic_list = skills_list('Desired')
-    all_current_magic = skills_list('Current')
+    desired_magic_list = helper.skills_list('Desired')
+    current_magic_list = helper.skills_list('Current')
     new_student['first_name'] = request.form["firstName"]
     new_student['last_name'] = request.form["lastName"]
-    new_student['created'] = curr_time
-    new_student['last_updated'] = curr_time
-    new_student['current_magic'] = all_current_magic
+    new_student['created'] = current_time
+    new_student['last_updated'] = current_time
+    new_student['current_magic'] = current_magic_list
     new_student['desired_magic'] = desired_magic_list
     new_student['desired_course'] = request.form.getlist('courseDesired')
     student_list[new_key] = new_student

@@ -8,60 +8,66 @@
     <form class="details" spellcheck="false" action="{{ url_for('success_add')}}" method="POST">
         <div class="bottom-space">
             <span><strong>First Name:</strong></span>
-            <input id="add-first-name" placeholder="First name" type="text" autocomplete="off" name="firstName" required>
+            <input id="add-first-name" placeholder="First name" type="text" autocomplete="off" name="firstName"
+                required>
         </div>
         <div>
             <span><strong>Last Name:</strong></span>
             <input id="add-last-name" placeholder="Last name" type="text" autocomplete="off" name="lastName" required>
         </div>
         <div>
-            <h4>Current Magic Skills</h4>
-            <table class="current-magic-table">
-                <tr>
-                    <th>Topic</th>
-                    <th>L1</th>
-                    <th>L2</th>
-                    <th>L3</th>
-                    <th>L4</th>
-                    <th>L5</th>
-                </tr>
-                {% for item in all_magic %}
-                <tr>
-                    <td>{{ item }}</td>
-                    {% for i in range(1, 6) %}
-                        <td><input type="radio" name="Current {{item}}" value="{{i}}"></td>   
+            <div class="input-skills-container">
+                <h4>Current Magic Skills</h4>
+                <table>
+                    <tr>
+                        <th>Topic</th>
+                        <th>Level</th>
+                    </tr>
+                    {% for item in all_magic %}
+                    <tr>
+                        <td>{{ item }}</td>
+                        <td>
+                            <select class="level-color" id="Current {{ item }}" name="Current {{ item }}">
+                                <option value='0'></option>
+                                {% for i in range(1, 6) %}
+                                <option value='{{i}}'>{{i}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
                     {% endfor %}
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
-        <div>
-            <h4>Desired Magic Skills</h4>
-            <table class="desired-magic-table">
-                <tr>
-                    <th>Topic</th>
-                    <th>L1</th>
-                    <th>L2</th>
-                    <th>L3</th>
-                    <th>L4</th>
-                    <th>L5</th>
-                </tr>
-                {% for item in all_magic %}
-                <tr>
-                    <td>{{ item }}</td>
-                    {% for i in range(1, 6) %}
-                        <td><input type="radio" name="Desired {{item}}" value="{{i}}"></td>   
+                </table>
+            </div>
+
+            <div class="input-skills-container">
+                <h4>Desired Magic Skills</h4>
+                <table>
+                    <tr>
+                        <th>Topic</th>
+                        <th>Level</th>
+                    </tr>
+                    {% for item in all_magic %}
+                    <tr>
+                        <td>{{ item }}</td>
+                        <td>
+                            <select class="level-color" id="Desired {{ item }}" name="Desired {{ item }}">
+                                <option value='0'></option>
+                                {% for i in range(1, 6) %}
+                                <option value='{{i}}'>{{i}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
                     {% endfor %}
-                </tr>
-                {% endfor %}
-            </table>
+                </table>
+            </div>
         </div>
 
         <div>
             <h4>Desired Courses</h4>
             <select multiple id="courseDesired" name="courseDesired" class="bottom-space" size="{{all_courses|length}}">
-                {% for course in all_courses %}                
-                <option value="{{course}}">{{course}}</option>                
+                {% for course in all_courses %}
+                <option value="{{course}}">{{course}}</option>
                 {% endfor %}
             </select>
         </div>

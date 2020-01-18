@@ -15,59 +15,61 @@
             <span><strong>Last Name:</strong></span>
             <input id="add-last-name" placeholder="Last name" type="text" autocomplete="off" name="lastName"
                 value={{student_data.last_name.capitalize()}} />
-
         </div>
-
         <div>
-            <h4>Current Magic Skills</h4>
-            <table>
-                <tr>
-                    <th>Topic</th>
-                    <th>L1</th>
-                    <th>L2</th>
-                    <th>L3</th>
-                    <th>L4</th>
-                    <th>L5</th>
-                </tr>
-                {% for item in all_magic %}
-                <tr>
-                    <td>{{ item }}</td>
-                    {% for i in range(1, 6) %}
-                    {% if item + " " + (i)|string() in student_data.current_magic %}
-                    <td><input type="radio" name="Current {{item}}" value="{{i}}" checked></td>
-                    {% else %}
-                    <td><input type="radio" name="Current {{item}}" value="{{i}}"></td>
-                    {% endif %}
+            <div class="input-skills-container">
+                <h4>Current Magic Skills</h4>
+                <table>
+                    <tr>
+                        <th>Topic</th>
+                        <th>Level</th>
+                    </tr>
+                    {% for item in all_magic %}
+                    <tr>
+                        <td>{{ item }}</td>
+                        <td>
+                            <select class="level-color" id="Current {{ item }}" name="Current {{ item }}">
+                                <option value='0'></option>
+                                {% for i in range(1, 6) %}
+                                {% if item + " " + (i)|string() in student_data.current_magic %}
+                                <option value='{{i}}' selected>{{i}}</option>
+                                {% else %}
+                                <option value='{{i}}'>{{i}}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
                     {% endfor %}
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
+                </table>
+            </div class="input-skills-container">
 
-        <div>
-            <h4>Desired Magic Skills</h4>
-            <table>
-                <tr>
-                    <th>Topic</th>
-                    <th>L1</th>
-                    <th>L2</th>
-                    <th>L3</th>
-                    <th>L4</th>
-                    <th>L5</th>
-                </tr>
-                {% for item in all_magic %}
-                <tr>
-                    <td>{{ item }}</td>
-                    {% for i in range(1, 6) %}
-                    {% if item + " " + (i)|string() in student_data.desired_magic %}
-                    <td><input type="radio" name="Desired {{item}}" value="{{i}}" checked></td>
-                    {% else %}
-                    <td><input type="radio" name="Desired {{item}}" value="{{i}}"></td>
-                    {% endif %}
+            <div class="input-skills-container">
+                <h4>Desired Magic Skills</h4>
+                <table>
+                    <tr>
+                        <th>Topic</th>
+                        <th>Level</th>
+                    </tr>
+                    {% for item in all_magic %}
+                    <tr>
+                        <td>{{ item }}</td>
+                        <td>
+                            <select class="level-color" id="Desired {{ item }}" name="Desired {{ item }}">
+                                <option value='0'></option>
+                                {% for i in range(1, 6) %}
+                                {% if item + " " + (i)|string() in student_data.desired_magic %}
+                                <option value='{{i}}' selected>{{i}}</option>
+                                {% else %}
+                                <option value='{{i}}'>{{i}}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
                     {% endfor %}
-                </tr>
-                {% endfor %}
-            </table>
+                </table>
+            </div>
         </div>
 
         <div>

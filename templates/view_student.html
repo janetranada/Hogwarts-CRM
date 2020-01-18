@@ -5,38 +5,66 @@
     <h2>View student</h2>
     <a class="to-link in-view-link" href="{{ url_for('list_students') }}">Back to List</a>
     <a class="to-link in-view-link" href="{{ url_for('update_student', record_id = rec_id) }}">Edit Record</a>
-
-    <p><strong>Record ID:</strong> {{ rec_id }}</p>
-    <p><strong>First Name:</strong> {{ info['first_name'].capitalize() }}</p>
-    <p><strong>Last Name:</strong> {{ info['last_name'].capitalize() }}</p>
-    <p><strong>Current Magic Skillz:</strong></p>
-    <div class="list-subcontainer">
-        <ul>
-            {% for element in info['current_magic'] %}
-            <li>{{ element }}</li>
-            {% endfor %}
-        </ul>
+    <div class="scroll-bg">
+        <div class="student record-container">
+            <table>
+                <tr>
+                    <th>Record ID:</th>
+                    <td>{{ rec_id }}</td>
+                </tr>
+                <tr>
+                    <th>First Name:</th>
+                    <td>{{ info['first_name'].capitalize() }}</td>
+                </tr>
+                <tr>
+                    <th>Last Name:</th>
+                    <td>{{ info['last_name'].capitalize() }}</td>
+                </tr>
+                <tr>
+                    <th>House:</th>
+                    <td>{{ info['house'].capitalize() }}</td>
+                </tr>
+                <tr>
+                    <th>Current Magic Skillz:</th>
+                    <td>
+                        <ul>
+                            {% for element in info['current_magic'] %}
+                            <li>{{ element }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Desired Magic Skillz:</th>
+                    <td>
+                        <ul>
+                            {% for element in info['desired_magic'] %}
+                            <li>{{ element }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Desired Course:</th>
+                    <td>
+                        <ul>
+                            {% for element in info['desired_course'] %}
+                            <li>{{ element }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Date Record Created:</th>
+                    <td>{{ created }}</td>
+                </tr>
+                <tr>
+                    <th>Date Last Updated:</th>
+                    <td>{{ updated }}</td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <p><strong>Desired Magic Skills:</strong></p>
-    <div class="list-subcontainer">
-        <ul>
-            {% for element in info['desired_magic'] %}
-            <li>{{ element }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-
-    <p><strong>Desired Course:</strong></p>
-    <div class="list-subcontainer">
-        <ul>
-            {% for element in info['desired_course'] %}
-            <li>{{ element }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-
-    <p><strong>Date Record Created:</strong> {{ created }}</p>
-    <p><strong>Date Record Last Updated:</strong> {{ updated }}</p>
 </div>
 
 {% endblock %}
