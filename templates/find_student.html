@@ -1,9 +1,47 @@
-{% extends "index.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-<h1>Find a Student</h1>
-<form>
-    <input placeholder="first name">
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Pirata+One&display=swap" rel="stylesheet">
+    <title>Hogwartz CRM</title>
+</head>
 
-{% endblock %}
+<body>
+
+    <div id="index-template">
+        <nav class="nav-container">
+            <ul>
+                <li class="nav-link"><a href="{{url_for('home_page')}}">Home</a></li>
+                <li class="nav-link"><a href="{{url_for('list_students')}}">Students List</a></li>
+                <li class="nav-link"><a href="{{url_for('find_student')}}">Find Student</a></li>
+                <li class="nav-link"><a href="{{url_for('add_student')}}">Add Student</a></li>
+                <li class="nav-link"><a href="{{url_for('show_dashboard')}}">Dashboard</a></li>
+            </ul>
+        </nav>
+
+        <div class="center-text">
+            <h1 class="welcome">Welcome to Hogwartz!</h1>
+
+            <div class="full-vh">
+                <h2>Find a Student</h2>
+                <input type="text" id="first-name-input" placeholder="first name">
+                <input type="text" id="last-name-input" placeholder="last name">
+                <button id="search-btn" type="button">Search</button>
+
+                <div id="search-results">
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <script src="../static/search.js"></script>
+    </div>
+</body>
+
+</html>

@@ -56,41 +56,41 @@ function create_doughnut_Chart(_label, _data, _datasetLabel, _htmlContainer, _ti
     });
 }
 
-function createSelection(name, options, targetContainer) {
-    let select_container = document.createElement("div")
-    let selection = document.createElement("select");
-    selection.setAttribute("name", name);
-    for (let i = 0; i < options.length; i++) {
-        let option = document.createElement("option");
-        option.setAttribute('value', options[i]);
-        option.innerText = options[i];
-        selection.appendChild(option);
-    }
-    select_container.appendChild(selection)
-    targetContainer.appendChild(select_container);
-}
+// function createSelection(name, options, targetContainer) {
+//     let select_container = document.createElement("div")
+//     let selection = document.createElement("select");
+//     selection.setAttribute("name", name);
+//     for (let i = 0; i < options.length; i++) {
+//         let option = document.createElement("option");
+//         option.setAttribute('value', options[i]);
+//         option.innerText = options[i];
+//         selection.appendChild(option);
+//     }
+//     select_container.appendChild(selection)
+//     targetContainer.appendChild(select_container);
+// }
 
-const desiredMagicContainer = document.getElementById('desired-magic')
-const currentMagicContainer = document.getElementById('current-magic')
-const magic = ['Alchemy', 'Animation', 'Conjuror', 'Disintegration', 'Elemental',
-    'Healing', 'Illusion', 'Immortality', 'Invisibility', 'Invulnerability',
-    'Necromancer', 'Omnipresent', 'Omniscient', 'Poison', 'Possession', 'Self-detonation',
-    'Summoning', 'Water breathing']
-const courses = ['Alchemy Basics',
-    'Alchemy Advanced',
-    'Magic for Day-to-Day Life',
-    'Magic for Medical Professionals',
-    'Dating with Magic']
+// const desiredMagicContainer = document.getElementById('desired-magic')
+// const currentMagicContainer = document.getElementById('current-magic')
+// const magic = ['Alchemy', 'Animation', 'Conjuror', 'Disintegration', 'Elemental',
+//     'Healing', 'Illusion', 'Immortality', 'Invisibility', 'Invulnerability',
+//     'Necromancer', 'Omnipresent', 'Omniscient', 'Poison', 'Possession', 'Self-detonation',
+//     'Summoning', 'Water breathing']
+// const courses = ['Alchemy Basics',
+//     'Alchemy Advanced',
+//     'Magic for Day-to-Day Life',
+//     'Magic for Medical Professionals',
+//     'Dating with Magic']
 
-document.getElementById('desired-magic-btn').addEventListener('click', () => {
-    console.log('desired magic')
-    select_name = "desired-magic"
-    createSelection(select_name, magic, desiredMagicContainer)
-})
+// document.getElementById('desired-magic-btn').addEventListener('click', () => {
+//     console.log('desired magic')
+//     select_name = "desired-magic"
+//     createSelection(select_name, magic, desiredMagicContainer)
+// })
 
-document.getElementById('current-magic-btn').addEventListener('click', () => {
-    console.log('current magic')
-    select_name = "current-magic"
-    createSelection(select_name, magic, desiredMagicContainer)
-})
+// document.getElementById('current-magic-btn').addEventListener('click', () => {
+//     console.log('current magic')
+//     select_name = "current-magic"
+//     createSelection(select_name, magic, desiredMagicContainer)
+// })
 

@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import time
 import datetime
+import random
 from crm_data import student_list, magic, courses, houses
 import helper_func as helper
+
 
 app = Flask(__name__)
 
@@ -20,6 +22,7 @@ def get_data():
     data_to_pass["current_magic_counter"] = current_skill_counter
     data_to_pass["desired_magic_counter"] = desired_skill_counter
     data_to_pass["magic_name"] = magic
+    data_to_pass["students"] = student_list
     return jsonify(data_to_pass)
 
 
@@ -116,6 +119,7 @@ def success_add():
     new_student['current_magic'] = current_magic_list
     new_student['desired_magic'] = desired_magic_list
     new_student['desired_course'] = request.form.getlist('courseDesired')
+    new_student['house'] = random.choice(houses)
     student_list[new_key] = new_student
     return render_template('add_student.html',
                            message="Record successfully added.",
