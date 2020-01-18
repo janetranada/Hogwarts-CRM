@@ -19,8 +19,11 @@ def get_data():
     data_to_pass = {}
     current_skill_counter = helper.get_crm_skills_record("current_magic")
     desired_skill_counter = helper.get_crm_skills_record("desired_magic")
+    year_created, year_created_counter = helper.get_crm_time_year("created")
     data_to_pass["current_magic_counter"] = current_skill_counter
     data_to_pass["desired_magic_counter"] = desired_skill_counter
+    data_to_pass["year_created"] = year_created
+    data_to_pass["year_created_counter"] = year_created_counter
     data_to_pass["magic_name"] = magic
     data_to_pass["students"] = student_list
     return jsonify(data_to_pass)

@@ -3,7 +3,10 @@
 {% block content %}
 <h2>Update Student Record</h2>
 <div class="record-container">
-    {% if message is not none %}<p class='center-text red'>{{ message }}</p>{% endif %}
+    {% if message is not none %}
+    <p class='center-text red'>{{ message }}</p>
+    <a class="to-link" href="/student/{{rec_id}}">View Student</a>
+    {% endif %}
 
     <form class="details" spellcheck="false" action="{{ url_for('update_student', record_id=rec_id)}}" method="POST">
         <div class="bottom-space">

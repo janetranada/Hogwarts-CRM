@@ -3,6 +3,7 @@ import time
 import datetime
 from crm_data import student_list, magic, courses, houses
 
+
 def skills_list(status):
     levels = []
     for i in range(0, len(magic)):
@@ -25,6 +26,16 @@ def get_crm_skills_record(_target_magic):
     flatlist_magic = [item for sublist in all_magic for item in sublist]
     skill_counter = [flatlist_magic.count(skill) for skill in magic]
     return skill_counter
+
+
+def get_crm_time_year(_target_timestamp):
+    global student_list
+    unixtime_list = [student_list[key][_target_timestamp] for key in student_list]
+    datetime_yr = [int(datetime.datetime.fromtimestamp(
+        unixtime).strftime('%Y')) for unixtime in unixtime_list]
+    year_unique = sorted(set(datetime_yr))
+    year_counter = [datetime_yr.count(year) for year in year_unique]
+    return year_unique, year_counter
 
 
 def convert_time(_label):

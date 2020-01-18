@@ -18,14 +18,53 @@ function create_charts(_data){
     magic_list = _data['magic_name']
     current_magic_counter = _data["current_magic_counter"]
     desired_magic_counter = _data["desired_magic_counter"]
+    year_created = _data["year_created"]
+    year_created_counter = _data["year_created_counter"]
+    year_text = 'Count of new students per year'
     curr_text = 'Current magic skills of Hogwarts students according to topic (since inception)'
     desired_text = 'Desired magic skills of Hogwarts students according to topic (since inception)'
-    create_doughnut_Chart(magic_list, current_magic_counter, "Current Magic Skills", "currentMagicChart", curr_text);
-    create_doughnut_Chart(magic_list, desired_magic_counter, "Desired Magic Skills", "desiredMagicChart", desired_text);
+    create_doughnut_chart(magic_list, current_magic_counter, "Current Magic Skills", "currentMagicChart", curr_text);
+    create_doughnut_chart(magic_list, desired_magic_counter, "Desired Magic Skills", "desiredMagicChart", desired_text);
+    create_line_chart(year_created, year_created_counter, "yearCreatedChart", year_text )
 }
 
+function create_line_chart(_label, _data, _htmlContainer, _titleText){
+    console.log('label>>', _label)
+    console.log('data>>', _data)
+    console.log(_htmlContainer)
+    console.log(_titleText)
+    let ctx = document.getElementById(_htmlContainer);
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: _label,
+          datasets: [{ 
+              data: _data,
+              label: 'count of students',
+              borderColor: "#3e95cd",
+              backgroundColor: "#d3f4ff",
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: true,
+            text: _titleText
+          },
+          scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 3
+                }
+            }]
+        }
+        }
+      });
 
-function create_doughnut_Chart(_label, _data, _datasetLabel, _htmlContainer, _titleText) {    
+}
+
+function create_doughnut_chart(_label, _data, _datasetLabel, _htmlContainer, _titleText) {    
     let ctx = document.getElementById(_htmlContainer);
     new Chart(ctx, {
         type: 'doughnut',

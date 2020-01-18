@@ -109,6 +109,7 @@ h1.welcome {
     display: grid;
 }
 .details {
+    margin-top: 15px;
     padding: 25px;
     justify-self: center; 
     background-color:black; 
@@ -248,4 +249,11 @@ h1.welcome {
 .search-result-item {
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+/* VIEW STUDENT */
+.student-img {
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
 }
